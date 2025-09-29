@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Installing frontend dependencies"
+      - cd frontend
+      - npm ci
+  build:
+    commands:
+      - echo "Building frontend"
+      - npm run build
+  post_build:
+    commands:
+      - echo "Frontend build finished"
+
+artifacts:
+  files:
+    - frontend/dist/**/*
+  discard-paths: no
